@@ -1,0 +1,37 @@
+name: コーポレートサイトを GitHub Pages に配信
+
+# site/ の中身をそのまま GitHub Pages に置く。ビルドは無い。
+# Pages が未設定でも enablement: true で自動的に有効化する（Source は GitHub Actions になる）。
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4

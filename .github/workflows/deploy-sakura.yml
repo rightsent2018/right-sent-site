@@ -1,0 +1,37 @@
+name: さくらのレンタルサーバへ配信
+
+# main に push すると、サイトのファイルをさくらのレンタルサーバへ FTPS で転送する。
+# 接続情報は GitHub の Settings → Secrets and variables → Actions に登録する：
+#   SAKURA_FTP_HOST      例: example.sakura.ne.jp
+#   SAKURA_FTP_USER      さくらのアカウント名
+#   SAKURA_FTP_PASSWORD  サーバーパスワード（FTP パスワード）
+#   SAKURA_FTP_DIR       転送先（例: /home/example/www/rightsent-new/ ）※末尾のスラッシュ必須
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: sakura
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ vars.SAKURA_DEPLOY == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: FTPS で転送
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SAKURA_FTP_HOST }}
+          username: ${{ secrets.SAKURA_FTP_USER }}
+          password: ${{ secrets.SAKURA_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ${{ secrets.SAKURA_FTP_DIR }}
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            README.md

@@ -5,7 +5,8 @@ name: さくらのレンタルサーバへ配信
 #   SAKURA_FTP_HOST      例: example.sakura.ne.jp
 #   SAKURA_FTP_USER      さくらのアカウント名
 #   SAKURA_FTP_PASSWORD  サーバーパスワード（FTP パスワード）
-#   SAKURA_FTP_DIR       転送先（例: /home/example/www/rightsent-new/ ）※末尾のスラッシュ必須
+#   SAKURA_FTP_DIR       転送先（例: www/rightsent-new/ ）※末尾のスラッシュ必須
+# アンダースコアなしの名前（SAKURAFTPHOST / SAKURAFTPUSER / SAKURAFTPPASSWORD / SAKURAFTPDIR / SAKURADEPLOY）でも可。
 on:
   push:
     branches: [main]
@@ -18,18 +19,18 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ vars.SAKURA_DEPLOY == 'true' }}
+    if: ${{ vars.SAKURA_DEPLOY == 'true' || vars.SAKURADEPLOY == 'true' }}
     steps:
       - uses: actions/checkout@v4
       - name: FTPS で転送
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.SAKURA_FTP_HOST }}
-          username: ${{ secrets.SAKURA_FTP_USER }}
-          password: ${{ secrets.SAKURA_FTP_PASSWORD }}
+          server: ${{ secrets.SAKURA_FTP_HOST || secrets.SAKURAFTPHOST }}
+          username: ${{ secrets.SAKURA_FTP_USER || secrets.SAKURAFTPUSER }}
+          password: ${{ secrets.SAKURA_FTP_PASSWORD || secrets.SAKURAFTPPASSWORD }}
           protocol: ftps
           port: 21
-          server-dir: ${{ secrets.SAKURA_FTP_DIR }}
+          server-dir: ${{ secrets.SAKURA_FTP_DIR || secrets.SAKURAFTPDIR }}
           local-dir: ./
           exclude: |
             **/.git*

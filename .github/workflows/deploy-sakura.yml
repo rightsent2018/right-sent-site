@@ -7,9 +7,8 @@ name: さくらのレンタルサーバへ配信
 #   SAKURA_FTP_PASSWORD  サーバーパスワード（FTP パスワード）
 #   SAKURA_FTP_DIR       転送先（例: www/rightsent-new/ ）※末尾のスラッシュ必須
 # アンダースコアなしの名前（SAKURAFTPHOST / SAKURAFTPUSER / SAKURAFTPPASSWORD / SAKURAFTPDIR / SAKURADEPLOY）でも可。
+# 現在は手動実行のみ（さくら側の国外IPフィルタにより GitHub からの FTP 接続は不可のため、通常は zip で更新）
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:

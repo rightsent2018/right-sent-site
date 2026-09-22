@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.rightsent.com/sitemap.xml

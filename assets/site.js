@@ -5,7 +5,7 @@
 (function () {
   var I18N = {
   "ja": {
-    "title": "株式会社ライセント｜ゲーム機の国内流通・海外輸出・レンタル・修理",
+    "title": "株式会社ライセント｜中古品の総合輸出企業（ゲーム機・スマートフォン）",
     "brand.name": "株式会社ライセント",
     "brand.sub": "RIGHTSENT CO., LTD.",
     "nav.business": "事業内容",
@@ -174,10 +174,18 @@
     "rc.v.benefit": "<li>賞与年2回</li><li>決算賞与</li><li>基本残業なし</li><li>有給休暇（システムから申請可能）</li><li>業界未経験歓迎</li>",
     "rc.apply": "この職種に応募・問い合わせる",
     "rc.back": "募集職種一覧へ",
-    "form.type.recruit": "採用について"
+    "form.type.recruit": "採用について",
+    "meta.desc": "株式会社ライセントは、ゲーム機・スマートフォンなど中古品の海外輸出を中心に、国内販売・レンタル・修理まで手がける東京の総合輸出企業です。",
+    "pt.biz": "事業内容｜株式会社ライセント",
+    "pt.company": "会社概要｜株式会社ライセント",
+    "pt.contact": "お問い合わせ｜株式会社ライセント",
+    "pt.news": "ニュース｜株式会社ライセント",
+    "pt.recruit": "採用情報｜株式会社ライセント",
+    "pt.rc.sales": "営業｜採用情報｜株式会社ライセント",
+    "pt.rc.sns": "SNS運用｜採用情報｜株式会社ライセント"
   },
   "en": {
-    "title": "RIGHTSENT CO., LTD. | Game console distribution, export, rental and repair",
+    "title": "RIGHTSENT CO., LTD. | Exporter of Pre-owned Game Consoles & Smartphones from Japan",
     "brand.name": "RIGHTSENT CO., LTD.",
     "brand.sub": "株式会社ライセント",
     "nav.business": "Business",
@@ -346,10 +354,18 @@
     "rc.v.benefit": "<li>Bonus twice a year</li><li>Year-end bonus</li><li>Essentially no overtime</li><li>Paid leave (requested online)</li><li>No industry experience required</li>",
     "rc.apply": "Apply or ask about this position",
     "rc.back": "Back to open positions",
-    "form.type.recruit": "Careers"
+    "form.type.recruit": "Careers",
+    "meta.desc": "RIGHTSENT CO., LTD. is a Tokyo-based trading company exporting pre-owned game consoles and smartphones from Japan, with domestic sales, rental and repair services.",
+    "pt.biz": "Our Business | RIGHTSENT CO., LTD.",
+    "pt.company": "Corporate Profile | RIGHTSENT CO., LTD.",
+    "pt.contact": "Contact Us | RIGHTSENT CO., LTD.",
+    "pt.news": "News | RIGHTSENT CO., LTD.",
+    "pt.recruit": "Careers | RIGHTSENT CO., LTD.",
+    "pt.rc.sales": "Sales | Careers | RIGHTSENT CO., LTD.",
+    "pt.rc.sns": "Social Media | Careers | RIGHTSENT CO., LTD."
   },
   "zh": {
-    "title": "RIGHTSENT株式会社｜游戏主机的国内流通、海外出口、租赁与修理",
+    "title": "RIGHTSENT株式会社｜日本二手商品综合出口企业（游戏主机・智能手机）",
     "brand.name": "RIGHTSENT株式会社",
     "brand.sub": "株式会社ライセント",
     "nav.business": "业务内容",
@@ -518,7 +534,15 @@
     "rc.v.benefit": "<li>每年两次奖金</li><li>决算奖金</li><li>基本无加班</li><li>带薪休假（可在线申请）</li><li>欢迎无行业经验者</li>",
     "rc.apply": "应聘或咨询此职位",
     "rc.back": "返回招聘职位",
-    "form.type.recruit": "招聘相关"
+    "form.type.recruit": "招聘相关",
+    "meta.desc": "RIGHTSENT株式会社是一家位于东京的综合出口企业，以游戏主机、智能手机等二手商品的海外出口为核心，并开展国内销售、租赁与维修业务。",
+    "pt.biz": "业务介绍｜RIGHTSENT株式会社",
+    "pt.company": "公司概要｜RIGHTSENT株式会社",
+    "pt.contact": "联系我们｜RIGHTSENT株式会社",
+    "pt.news": "新闻｜RIGHTSENT株式会社",
+    "pt.recruit": "招聘信息｜RIGHTSENT株式会社",
+    "pt.rc.sales": "销售｜招聘信息｜RIGHTSENT株式会社",
+    "pt.rc.sns": "社交媒体运营｜招聘信息｜RIGHTSENT株式会社"
   }
 };
 
@@ -568,6 +592,9 @@
         el.innerHTML = v;
       }
     });
+    if (dict['meta.desc'] && document.body.classList.contains('is-top')) {
+      var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', dict['meta.desc']);
+    }
     document.querySelectorAll('[data-lang]').forEach(function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
     });

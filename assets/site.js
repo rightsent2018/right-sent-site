@@ -5,7 +5,7 @@
 (function () {
   var I18N = {
   "ja": {
-    "title": "株式会社ライセント｜中古品の総合輸出企業（ゲーム機・スマートフォン）",
+    "title": "株式会社ライセント｜中古品の総合輸出企業",
     "brand.name": "株式会社ライセント",
     "brand.sub": "RIGHTSENT CO., LTD.",
     "nav.business": "事業内容",
@@ -185,7 +185,7 @@
     "pt.rc.sns": "SNS運用｜採用情報｜株式会社ライセント"
   },
   "en": {
-    "title": "RIGHTSENT CO., LTD. | Exporter of Pre-owned Game Consoles & Smartphones from Japan",
+    "title": "RIGHTSENT CO., LTD. | Exporter of Pre-owned Goods from Japan",
     "brand.name": "RIGHTSENT CO., LTD.",
     "brand.sub": "株式会社ライセント",
     "nav.business": "Business",
@@ -365,7 +365,7 @@
     "pt.rc.sns": "Social Media | Careers | RIGHTSENT CO., LTD."
   },
   "zh": {
-    "title": "RIGHTSENT株式会社｜日本二手商品综合出口企业（游戏主机・智能手机）",
+    "title": "RIGHTSENT株式会社｜二手商品综合出口企业",
     "brand.name": "RIGHTSENT株式会社",
     "brand.sub": "株式会社ライセント",
     "nav.business": "业务内容",

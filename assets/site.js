@@ -552,9 +552,8 @@
     var q = new URLSearchParams(location.search).get('lang');
     if (q && I18N[q]) return q;
     try { var s = localStorage.getItem(KEY); if (s && I18N[s]) return s; } catch (e) {}
-    var nav = (navigator.language || 'ja').toLowerCase();
-    if (nav.indexOf('zh') === 0) return 'zh';
-    if (nav.indexOf('en') === 0) return 'en';
+    // ブラウザ言語による自動切替はしない（検索エンジンに英語版が登録されるのを防ぐ）。
+    // 言語ボタンを押した場合と ?lang= 指定のときだけ切り替える。
     return 'ja';
   }
 
